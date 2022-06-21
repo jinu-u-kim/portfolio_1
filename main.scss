@@ -1,0 +1,28 @@
+@import 'variable.scss';
+
+@mixin respond-to($media){
+    @if $media == mobile {
+        @media only screen and (max-width: $tabletsize) {@content;}
+
+    }
+
+    @else if $media == tablet {
+        @media only screen and (min-width: $tabletsize) and (max-width: $pcsize) {@content;}
+    }
+
+    @else if $media == pc {
+        @media only screen and (min-width: $pcsize) {@content;}
+    }
+}
+.font {
+    @include respond-to(mobile) {
+        font-size : 45px;
+    }
+    @include respond-to(tablet) {
+        font-size: 60px;
+    }
+    @include respond-to(pc) {
+        font-size: 100px;   
+    }
+        
+}
